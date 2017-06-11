@@ -31,7 +31,7 @@ module ProgressJob
     end
 
     def error(job, exception)
-      job.update_column(:progress_stage, exception.message)
+      job.update_column(:progress_stage, exception.message) unless job.new_record?
     end
   end
 end
